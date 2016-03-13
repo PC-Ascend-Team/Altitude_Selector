@@ -2,7 +2,12 @@
 //Version 1.3
 //PC NASA ASCEND TEAM
 //##########################################################
+//PR: good place to check general c++ code is to use codepad.org for 
+//whether or not your program flow works like if checks or switch cases.
+
+//##########################################################
 //initialize all the pins for the motors.
+//PR:this area is just creating variable names to refer to integers. Pin initialization to input/out happens in the pinmode
   int pwmPin = 11; //pwm pin
   int motor1Pin = 3; //first motor
   int motor2Pin = 4; //second motor
@@ -32,11 +37,36 @@ void setup(){
   pinMode(motor8Pin, OUTPUT);
   pinMode(motor9Pin, OUTPUT);
   pinMode(motor10Pin, OUTPUT);
+  /*PR:could be shortened. This will use the pinmode function to initialize 
+  every pin you're using as an output from 3 to 13 (13 < 14). You can still 
+  use motor5Pin to do a digitalWrite though because motor5Pin is just the integer 7.
+  for(int i = 3; i < 14; i++ ){// set pins 3 - 13 to output
+    pinMode(i, OUTPUT);
+  }
+  }
+  */
 
 }
 
 void loop() {
 //when desired altitude is reached, trigger proper motor.
+/*PR:
+  your code here is saying if (alt == 'a'){
+                              if(alt == 10 ){
+                                //operate  
+                              }
+                            }
+  I think you mean
+  switch(alt){
+    case 10:// checks if alt == 10
+      //stuff 
+      break;
+    case 20:
+      //other stuff
+      break;
+  }
+*/
+
 switch (alt){
     case 'a':
      if (alt = 10){
@@ -48,6 +78,8 @@ switch (alt){
       break;
     case 'b':
      if (alt = 20){
+       //PR: look up how to declare functions in C++/Arduino (they're the same thing, my data extracter is a good example)
+       // so that you can replace the  repeated digitalWrites and drive with just a function call. (saves program space)
       digitalWrite(motor2Pin, HIGH);
       delay(driveTime);
       digitalWrite(motor2Pin, LOW);
