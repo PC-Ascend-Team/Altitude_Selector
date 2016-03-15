@@ -1,4 +1,6 @@
 /*
+demo video
+https://youtu.be/-18AmppHLVg
 Example program showing valid use of the H-bridge motor controllerchip.
 
 to change from proper two motor driving to the weird quad motor driving
@@ -29,6 +31,12 @@ void setup() {
   digitalWrite(rightMotorDrive, LOW);
   Serial.begin(9600);
 }
+
+/*
+The pulsating issue in my seccond test video could be because 
+I'm manipulating the enablePin value here on both buttons. This test shuold be repeated,
+but with the enable pin connected directly to 5V through a 1K resistor. This could fix it.
+*/
 
 void loop() {
   Serial.print(F("leftBtn= "));//for left button/motors
