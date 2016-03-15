@@ -1,6 +1,6 @@
 /*
 demo video
-https://youtu.be/-18AmppHLVg
+https://youtu.be/7lFjYZmO75c
 Example program showing valid use of the H-bridge motor controllerchip.
 
 to change from proper two motor driving to the weird quad motor driving
