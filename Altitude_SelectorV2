@@ -1,0 +1,76 @@
+//Code created by Jake Denison
+//Version 2.0
+//PC NASA ASCEND TEAM
+//##########################################################
+//Define all the pins for the motors
+  int pwmPin = 11; //pwm pin
+  int motor1Pin = 3; //first motor
+  int motor2Pin = 4; //second motor
+  int motor3Pin = 5; //third motor
+  int motor4Pin = 6; //fourth motor
+  int motor5Pin = 7; //fifth motor
+  int motor6Pin = 8; //sixth motor
+  int motor7Pin = 9; //seventh motor
+  int motor8Pin = 10; //eighth motor
+  int motor9Pin = 12; //nineth motor
+  int motor10Pin = 13; //tenth motor
+  int alt = 10; //altitude
+  int driveTime = 10000; //motor run time
+  int sampCount = 0; //amount of samples collected
+  int i;
+
+  void motorCollectFunction (int motorSelect){
+    digitalWrite(motorSelect, HIGH);
+    delay(driveTime);
+    digitalWrite(motorSelect, LOW);
+    sampCount + 1;
+  }
+    
+void setup(){
+  
+//set output pins
+  for (int i = 3; i < 14; i++ ){// set pins 3 - 13 to output
+    pinMode(i, OUTPUT);
+  }  
+}
+
+void loop() {
+//when desired altitude is reached, trigger proper motor.
+switch (alt){
+    case 10:
+     motorCollectFunction;
+    break;
+    case 20:
+      motorCollectFunction;
+    break;
+    case 30:
+     motorCollectFunction;
+    break;
+    case 40:
+     motorCollectFunction;
+    break;
+    case 50:
+     motorCollectFunction;
+    break;
+    case 60:
+     motorCollectFunction;
+    break;
+    case 70:
+      motorCollectFunction;
+    break;
+    case 80:
+      motorCollectFunction;
+    break;
+    case 90:
+      motorCollectFunction;
+    break;
+    case 100:
+      motorCollectFunction;
+    break;
+    default: 
+     if (alt == 10);
+      
+    break;
+  }
+
+} 
