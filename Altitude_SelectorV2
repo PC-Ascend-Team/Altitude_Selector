@@ -25,6 +25,40 @@
     digitalWrite(motorSelect, LOW);
     sampCount + 1;
   }
+  
+  /*// This function is a bit more complicated than the last one I gave you. 
+    // But this function just takes in the motor number you want to drive
+    // and you have to hard code the forward and reverse pin (in this context
+    // it's okay to hardcode because these pins won't change during real operations)
+    // The function also takes care of clearing the airway to remove stagnant air using the delay function
+    // The delay function could become a problem eventually (delay blocks processing other things until done)
+    // This would be an issue if we're worried about checking altitude constantly. A fix could be millis()
+    // Try using this motor driver function. It drives backward for 5 sec and then forward for 10 sec
+  void driveMotor(int motorNum){
+	  //should I make bake these into the function inputs?
+	  int fwdPin = pick a pin;
+	  int revPin = pick a pin;
+	  int revDel = 5000;// delay for reverse drive.
+	  int fwdDel = 10000;//delay for main gas collection
+
+	  digitalWrite(motorNum, driveVal);// enable motor
+
+	  // clear airway to make sure no stagnant air is captured
+	  digitalWrite(fwdPin, LOW);
+	  digitalWrite(revPin, HIGH);
+	  delay(revDel);//drive in reverse for 5 sec
+	  digitalWrite(revPin, LOW);// stop driving motors
+
+	  // drive forward for main gas sample collection
+	  digitalWrite(fwdPin, HIGH);
+	  digitalWrite(revPin, LOW);
+	  delay(fwdDel);
+
+	  // deactivate motor and remove voltage accross motor
+	  digitalWrite(motorNum, LOW);
+	  digitalWrite(fwdPin, LOW);
+  }
+*/
     
 void setup(){
   
