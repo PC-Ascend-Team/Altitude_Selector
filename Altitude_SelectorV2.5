@@ -1,0 +1,91 @@
+//Code created by Jake Denison
+//Version 2.5
+//PC NASA ASCEND TEAM
+//##########################################################
+//Define all the pins for the motors
+  int fwdPin = 11; //foward pin (duh)
+  int revPin = 10; //reverse pin (duh)
+  int motor1Pin = 3; //first motor
+  int motor2Pin = 4; //second motor
+  int motor3Pin = 5; //third motor
+  int motor4Pin = 6; //fourth motor
+  int motor5Pin = 7; //fifth motor
+  int motor6Pin = 8; //sixth motor
+  int motor7Pin = 9; //seventh motor
+  int motor8Pin = 10; //eighth motor
+  int motor9Pin = 12; //nineth motor
+  int motor10Pin = 13; //tenth motor
+  int alt = 10; //altitude
+  int driveTime = 10000; //motor run time
+  int sampCount = 0; //amount of samples collected
+  int i;
+  int motorSelect;
+
+  void driveMotor(int motorNum){
+    int revDel(5000); //drive times
+    int fwdDel(10000); 
+    digitalWrite(motorNum, HIGH); //enable selected motor
+    digitalWrite(fwdPin, LOW); //drives motor in reverse to clear out stagnant air before collecting sample
+    digitalWrite(revPin, HIGH);
+    delay(revDel);
+    digitalWrite(revPin, LOW); //airway clear completed
+
+    digitalWrite(fwdPin, HIGH); //begin sample collection
+    digitalWrite(revPin, LOW); 
+    delay(fwdDel); //sample collection completed
+
+    digitalWrite(fwdPin, LOW);
+    digitalWrite(revPin, LOW); //shutdown
+    
+  }
+    
+void setup(){
+  
+//set output pins
+  for (int i = 3; i < 14; i++ ){// set pins 3 - 13 to output
+    pinMode(i, OUTPUT);
+  }  
+    pinMode(fwdPin, OUTPUT);
+    pinMode(revPin, OUTPUT);
+}
+
+void loop() {
+//when desired altitude is reached, trigger proper motor.
+switch (alt){
+    case 10:
+     driveMotor (motor1Pin);
+    break;
+    case 20:
+      driveMotor (motor1Pin);
+    break;
+    case 30:
+     driveMotor (motor1Pin);
+    break;
+    case 40:
+     driveMotor (motor1Pin);
+    break;
+    case 50:
+     driveMotor (motor1Pin);
+    break;
+    case 60:
+     driveMotor (motor1Pin);
+    break;
+    case 70:
+      driveMotor (motor1Pin);
+    break;
+    case 80:
+      driveMotor (motor1Pin);
+    break;
+    case 90:
+      driveMotor (motor1Pin);
+    break;
+    case 100:
+      driveMotor (motor1Pin);
+    break;
+    default: 
+     if (alt == 0);
+      
+    break;
+  }
+
+} 
