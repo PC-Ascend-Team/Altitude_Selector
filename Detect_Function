@@ -1,0 +1,109 @@
+//Code created by Jake Denison
+//Version 2.5 FOR MASTER
+//PC NASA ASCEND TEAM
+//##########################################################
+//Define all the pins for the motors
+  int fwdPin = 11; //foward pin (duh)
+  int revPin = 10; //reverse pin (duh)
+  int motor1Pin = 3; //first motor
+  int motor2Pin = 4; //second motor
+  int motor3Pin = 5; //third motor
+  int motor4Pin = 6; //fourth motor
+  int motor5Pin = 7; //fifth motor
+  int motor6Pin = 8; //sixth motor
+  int motor7Pin = 9; //seventh motor
+  int motor8Pin = 10; //eighth motor
+  int motor9Pin = 12; //nineth motor
+  int motor10Pin = 13; //tenth motor
+  int driveTime = 10000; //motor run time
+  int sampCount = 0; //amount of samples collected
+  int i;
+  int y;
+  int motorSelect;
+  int altArr[10];
+
+  void driveMotor(int motorNum){
+    int revDel(5000); //drive times
+    int fwdDel(10000); 
+    digitalWrite(motorNum, HIGH); //enable selected motor
+    digitalWrite(fwdPin, LOW); //drives motor in reverse to clear out stagnant air before collecting sample
+    digitalWrite(revPin, HIGH);
+    delay(revDel);
+    digitalWrite(revPin, LOW); //airway clear completed
+
+    digitalWrite(fwdPin, HIGH); //begin sample collection
+    digitalWrite(revPin, LOW); 
+    delay(fwdDel); //sample collection completed
+
+    digitalWrite(fwdPin, LOW);
+    digitalWrite(revPin, LOW); //shutdown
+ }
+  void altDetect (){
+    int stepSize = 0;
+    int alt;
+    int oldAlt;
+    int deltaAlt = alt-oldAlt;
+  while (stepSize == 0){
+  if (deltaAlt < 0){
+    stepSize = alt/10;
+  }
+    for(int y = 1; y <= 10; y++){
+    altArr[y] = {alt-(y*stepSize)};
+   }   
+  }
+ }    
+
+    
+void setup(){
+  
+//set output pins
+  for (int i = 3; i < 14; i++ ){// set pins 3 - 13 to output
+    pinMode(i, OUTPUT);
+  }  
+    pinMode(fwdPin, OUTPUT);
+    pinMode(revPin, OUTPUT);
+}
+
+void loop() {
+
+altDetect();
+  
+//when desired altitude is reached, trigger proper motor.
+switch (altArr[y]){
+    case altArr[1]:
+     driveMotor (motor1Pin);
+    break;
+    case altArr[2]:
+      driveMotor (motor1Pin);
+    break;
+    case altArr[3]:
+     driveMotor (motor1Pin);
+    break;
+    case altArr[4]:
+     driveMotor (motor1Pin);
+    break;
+    case altArr[5]:
+     driveMotor (motor1Pin);
+    break;
+    case altArr[6]:
+     driveMotor (motor1Pin);
+    break;
+    case altArr[7]:
+      driveMotor (motor1Pin);
+    break;
+    case altArr[8]:
+      driveMotor (motor1Pin);
+    break;
+    case altArr[9]:
+      driveMotor (motor1Pin);
+    break;
+    case altArr[10]:
+      driveMotor (motor1Pin);
+    break;
+    default: 
+     if (alt == 0);
+      
+    break;
+  }
+
+} 
